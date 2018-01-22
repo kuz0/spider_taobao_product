@@ -13,12 +13,11 @@ from config import *
 client = MongoClient(MONGO_URI)
 db = client[MONGO_DB]
 
-browser = webdriver.PhantomJS(service_args=SERVICE_ARGS)
+browser = webdriver.Firefox()
 wait = WebDriverWait(browser, 10)
 
 
 def search():
-    print('Searching!')
     try:
         browser.get('https://www.taobao.com')
         input_box = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '#q')))
